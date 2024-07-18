@@ -1,0 +1,573 @@
+@import 'modern-normalize';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
+
+/************ Navbar Css ************/
+
+.logo {
+  display: inline-flex;
+  font-family: 'Lobster', cursive;
+  margin: 0;
+  padding: 0;
+  width: 150px;
+
+  
+}
+
+
+.user-name {
+  color: #fff;
+  font-size: 80px;
+  font-weight: 700;
+}
+
+nav.navbar {
+  padding: 18px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+}
+nav.navbar.scrolled {
+  padding: 0px 0;
+
+  backdrop-filter: blur(10px);
+  background-color: #00466e1a;
+}
+nav.navbar a.navbar-brand {
+  width: 9%;
+}
+nav.navbar .navbar-nav .nav-link.navbar-link {
+  font-weight: 600;
+  color: #dbf0f3;
+  letter-spacing: 0.8px;
+  padding: 0 25px;
+  font-size: 18px;
+  opacity: 0.75;
+}
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+nav.navbar .navbar-nav a.nav-link.navbar-link.active {
+  opacity: 1;
+  color: white;
+}
+span.navbar-text {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  display: inline-block;
+  stroke-width: 0;
+  stroke: none;
+  fill:  #dbf0f3;
+}
+
+.social-icon {
+  display: inline-block;
+  margin-left: 14px;
+}
+
+.social-link {
+  width: 42px;
+  height: 42px;
+  background: rgba(20, 20, 20, 0.1);
+  display: inline-flex;
+  border-radius: 50%;
+  margin-right: 12px;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.social-link::before {
+  content: '';
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  background-color: #4d7a8a;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 0.3s ease-in-out;
+
+}
+.social-link:hover::before {
+  transform: scale(1);
+
+}
+.social-link svg {
+  width: 50%;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+.social-link:hover svg {
+  filter: brightness(60%) saturate(0%) invert(0%) sepia(7%) saturate(0%)
+    hue-rotate(180deg) brightness(100%) contrast(50%);
+}
+
+nav.navbar .navbar-toggler:active,
+nav.navbar .navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+nav.navbar .navbar-toggler-icon {
+  width: 24px;
+  height: 17px;
+  background-image: none;
+  position: relative;
+  border-bottom: 2px solid #fff;
+  transition: all 300ms linear;
+  top: -2px;
+}
+nav.navbar .navbar-toggler-icon:focus {
+  border-bottom: 2px solid #fff;
+}
+nav.navbar .navbar-toggler-icon:after,
+nav.navbar .navbar-toggler-icon:before {
+  width: 24px;
+  position: absolute;
+  height: 2px;
+  background-color: #fff;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 2;
+  transition: all 300ms linear;
+}
+nav.navbar .navbar-toggler-icon:after {
+  top: 8px;
+}
+nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon:after {
+  transform: rotate(45deg);
+  background-color: #fff;
+  height: 2px;
+}
+nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon:before {
+  transform: translateY(8px) rotate(-45deg);
+  background-color: #fff;
+  height: 2px;
+}
+nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
+  border-color: transparent;
+}
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.navbar-collapse {
+  display: flex;
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+/**************** header ***************/
+
+.header {
+  margin-top: 0;
+  padding: 200px 0 150px 0;
+  background-image: url('./assets/img/modern-tech-background-with-low-poly-plexus-min.jpg');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header .tagLine {
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  font-size: 18px;
+  display: inline-block;
+  color: #032235;
+  margin-bottom: 50px;
+}
+
+.align-items-center {
+  font-family: 'Poppins', sans-serif;
+  margin-left: 80px;
+}
+
+.header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 55px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  line-height: 1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.header p {
+  color: #032235;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+}
+
+.cursor {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 45px;
+  background: linear-gradient(
+    90.21deg, 
+    rgba(170, 54, 124, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  animation: blink-caret 0.75s step-end infinite;
+  transform: translateY(10%);
+}
+
+@keyframes blink-caret {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #090909;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90.21deg,
+    rgba(240, 11, 81, 0.5) -5.91%,
+    rgba(74, 47, 189, 0.5) 111.58%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/************ Skills Css ************/
+.skill {
+  padding: 0 0 50px 0;
+  position: relative;
+}
+
+.skill-bx {
+  text-align: center;
+  padding: 60px 50px;
+  margin-top: -60px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: #5f677666;
+  display: block; /* Зміна відображення на блочне */
+}
+
+.skill-bx:before,
+.skill-bx:after {
+  content: '';
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  bottom: 2%;
+  left: 1%;
+  border: solid 2px #e6afe5;
+  transition: 0.2s;
+  transform: scaleX(0);
+  opacity: 0.5;
+}
+
+.skill-bx:hover:before,
+.skill-bx:hover:after {
+  transform: scale(1);
+}
+
+.item {
+  display: inline-block; /* Використовуйте inline-block, а не Flexbox */
+  text-align: center; /* Центрування тексту внутрішніх елементів */
+  width: 25%; /* Ширина, щоб забезпечити 4 елементи в рядку */
+  margin: 0 auto; /* Автоматичні відступи по боках для центрування */
+}
+
+.item-img {
+  display: block;
+  width: 120px; /* Ширина зображення */
+  height: auto;
+  margin: 0 auto 15px; /* Відступи знизу для тексту */
+}
+
+.item h5 {
+  margin: 0; /* Видаліть відступи для тексту */
+}
+
+.skill h2,
+.project h2 {
+  font-family: Amatic;
+  color: #fff;
+  font-size: 80px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.skill p {
+  color: #032235;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px 10px 45px 10px;
+  width: 100%;
+}
+
+/************ Projects Css ************/
+
+.project {
+  position: relative;
+  background-color: #4b7272;
+  padding: 60px 0;
+}
+
+.proj-link {
+  text-decoration: none;
+}
+
+.project-text {
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  margin: 14px auto 30px auto;
+  text-align: center;
+  width: 70%;
+  backdrop-filter: blur(20px);
+}
+
+.owl-carousel .proj-imgbx {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+  transition: transform 0.5s ease-in-out;
+  margin: 0 5px;
+}
+
+.owl-carousel img {
+  width: 400px; 
+  height: 250px; 
+  overflow: hidden;
+  border-radius: 15px;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease-in-out;
+}
+
+.owl-carousel img:hover {
+  transform: scale(1.1);
+}
+
+.proj-txtx {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  transform: translateY(100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.proj-txtx h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.proj-imgbx:hover .proj-txtx {
+  transform: translateY(0);
+}
+
+/* Animation */
+.animate__fadeIn {
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 768px) {
+  .col-md-4 {
+    width: 100% !important;
+  }
+}
+
+
+/************ Contact Css ************/
+.contact {
+  padding: 60px 0;
+  background-color: #384d4d !important; 
+
+}
+
+.form-container {
+  position: relative;
+}
+
+
+.contact h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.contact form input,
+.contact form textarea  {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  color: #b3aeae;
+  margin-bottom: 15px;
+  padding: 15px 20px;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  background-color: inherit;
+  transition: 0.3s ease-in-out;
+
+}
+.contact form input:focus,
+.contact form textarea:focus {
+  color: #121212;
+}
+.contact form input::placeholder,
+.contact form textarea::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #b3aeae;
+}
+.contact form input:focus::placeholder,
+.contact form textarea:focus::placeholder {
+  color: #121212;
+  opacity: 0.8;
+}
+.contact form button {
+  font-weight: 700;
+  width: 180px;
+  color: #b3aeae;
+  padding: 14px 48px;
+  font-size: 18px;
+  border-radius: 0;
+  position: relative;
+  transition: 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+}
+.contact form button span {
+  z-index: 1;
+  position: relative;
+}
+.contact form button:hover {
+  color: #2d2c2c;
+}
+.contact form button::before {
+  content: '';
+  background: #4d7a8a;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+}
+.contact form button:hover::before {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.status-message {
+  position: absolute;
+  font-size: 16px;
+  bottom: -40px; /* Налаштуйте це значення для точного позиціонування */
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+
+
+}
+.status-message.success {
+  color: #061c0b;
+}
+
+.status-message.danger {
+  color: #721c24;
+}
+
+/************ Footer Css ************/
+
+.footer {
+  padding: 20px 0 20px 0;
+  background-image: url('./assets/img/modern-tech-background-with-low-poly-plexus-min.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+.footer-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-top: 20px;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(1% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(1% + 1px) !important;
+}
+
+.ms-autochange {
+  margin: 5px !important;
+}
+
+
+@media screen and (max-height: 414px) {
+  .header {
+    padding: 130px 0 100px 0;
+  }
+  .header h1 {
+    font-size: 30px;
+    font-weight: 700;
+  }
+  .user-name {
+    font-size: 40px;
+  }
+  .header p {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.1em;
+  }
+
+}
+
+@media screen and (max-height: 375px) {
+  .header {
+    padding: 180px 0 100px 0;
+  }
+  .header p {
+    width: 98%;
+  }
+  .header h1 {
+    margin-bottom: 2px;
+  }
+}
