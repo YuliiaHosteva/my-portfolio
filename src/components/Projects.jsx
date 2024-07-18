@@ -33,14 +33,14 @@ const Projects = () => {
       title: 'Energy.flow',
       description: '',
       imgUrl: projImg3,
-      url: '#',
+      url: 'https://jackavryashnik.github.io/fitnes-app/',
     },
     {
       id: 4,
       title: 'Vishivanka',
       description: '',
       imgUrl: projImg4,
-      url: '#',
+      url: 'https://veronikavaraksina1.github.io/command-project-vyshyvanka-vibes/',
     },
     {
       id: 5,
