@@ -7,7 +7,7 @@ import Footer from './components/footer';
 import ContactForm from './components/ContactsForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
       <NavigationBar />
@@ -18,6 +18,4 @@ function App() {
       <Footer/>
     </div>
   );
-}
-
-export default App;
+};
