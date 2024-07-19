@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import icons from '../assets/img/icons.svg';
 
 const ContactForm = () => {
   const formInitialDetails = {
@@ -15,6 +16,7 @@ const ContactForm = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
+  const [addressVisible, setAddressVisible] = useState(false);
 
   const onFormUpdate = (category, value) => {
     setFormDetails({
@@ -26,29 +28,35 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validate form fields
     const { firstName, lastName, email, phone, message } = formDetails;
     if (!firstName || !lastName || !email || !phone || !message) {
       setStatus({ success: false, message: 'Please fill in all fields.' });
-      setTimeout(() => setStatus({}), 5000); // Remove status message after 5 seconds
+      setTimeout(() => setStatus({}), 5000); 
       return;
     }
 
-    // Simulate form submission
     setButtonText('Sending...');
     setTimeout(() => {
       setFormDetails(formInitialDetails);
       setButtonText('Send');
       setStatus({ success: true, message: 'Message sent successfully' });
-      setTimeout(() => setStatus({}), 5000); // Remove status message after 5 seconds
+      setTimeout(() => setStatus({}), 5000);
     }, 2000);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAddressVisible(true);
+    }, 3000); 
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section className="contact" id="contact">
       <Container>
         <Row className="align-items-center">
-          <Col size={12} md={6}>
+          <Col md={6}>
             <TrackVisibility>
               {({ isVisible }) => (
                 <div className={isVisible ? 'animate__animated animate__zoomIn' : ''}>
@@ -93,7 +101,6 @@ const ContactForm = () => {
                             value={formDetails.message}
                             placeholder="Message"
                             onChange={(e) => onFormUpdate('message', e.target.value)}
-                            
                           />
                           <button type="submit">
                             <span>{buttonText}</span>
@@ -110,6 +117,51 @@ const ContactForm = () => {
                 </div>
               )}
             </TrackVisibility>
+          </Col>
+          <Col md={6}>
+            {addressVisible && (
+              <TrackVisibility>
+                {({ isVisible }) => (
+                  <div className={isVisible ? 'animate__animated animate__zoomIn' : ''}>
+                    <div className="address-box">
+                      <address>
+                        <ul className="contact-list">
+                          <li className="contact-link">
+                            <svg className="icon-contact" width={18} height={18}>
+                              <use href={`${icons}#icon-location2`}></use>
+                            </svg>
+                            <a
+                              className="link"
+                              href="https://www.google.com/maps?q=38889, Blankenburg, Saxony-Anhalt, Germany"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              38889, Blankenburg, Saxony-Anhalt, Germany
+                            </a>
+                          </li>
+                          <li className="contact-link">
+                            <svg className="icon-contact" width={18} height={18}>
+                              <use href={`${icons}#icon-mail4`}></use>
+                            </svg>
+                            <a className="link" href="mailto:yulia.gosteva85@gmail.com">
+                              yulia.gosteva85@gmail.com
+                            </a>
+                          </li>
+                          <li className="contact-link">
+                            <svg className="icon-contact" width={18} height={18}>
+                              <use href={`${icons}#icon-phone`}></use>
+                            </svg>
+                            <a className="link" href="tel:+49015205485193">
+                              +49(0)152-054-851-93
+                            </a>
+                          </li>
+                        </ul>
+                      </address>
+                    </div>
+                  </div>
+                )}
+              </TrackVisibility>
+            )}
           </Col>
         </Row>
       </Container>

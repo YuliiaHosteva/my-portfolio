@@ -47,17 +47,20 @@ const Header = () => {
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
-            {/* <span className="tagLine">Welcome to my Portfolio</span> */}
+            <span className="tagLine">Welcome to my Portfolio</span>
             <h1>
-            Hi! I&apos;m <span className="wrap gradient-text">{currentText}</span>
+            I&apos;m <span className="wrap gradient-text">{currentText}</span>
             <span className="cursor"></span> 
             </h1>
+            <div className="text-box">
             <p>
               I&apos;m a full stack developer passionate about creating elegant and 
               efficient solutions to complex problems. With a keen eye for design and 
               a thirst for new challenges, I push the boundaries of what&apos;s possible, 
               whether in user interfaces or development tasks.
             </p>
+            </div>
+         
           </Col>
         </Row>
       </Container>

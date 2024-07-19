@@ -1,6 +1,5 @@
 import Header from './components/header';
 import NavigationBar from './components/Navbar';
-import './index.css';
 import './App.css';
 import Skills from './components/Skills';
 import Projects from './components/Projects';

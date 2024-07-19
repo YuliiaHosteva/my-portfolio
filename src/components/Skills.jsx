@@ -12,7 +12,7 @@ const Skills = () => {
           <Col>
             <div className="skill-bx wow zoomIn">
               <h2>Skills</h2>
-              <p> I am proficient in CSS, HTML, and JavaScript, and have mastered React and Node.js. 
+              <p> I am proficient in CSS, HTML, JavaScript and have mastered React and Node.js. 
                 Over the past 10 months of coding, I have successfully completed 3 team projects and 4 individual projects. 
                 These experiences have honed my core technical skills and developed my abilities in organizational ethics and discipline.
               </p>
