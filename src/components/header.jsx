@@ -48,10 +48,12 @@ const Header = () => {
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
             <span className="tagLine">Welcome to my Portfolio</span>
-            <h1>
-            I&apos;m <span className="wrap gradient-text">{currentText}</span>
+            <h1 className="dynamic-text-wrapper">
+              I&apos;m <span className="wrap gradient-text">{currentText}</span>
             <span className="cursor"></span> 
             </h1>
+            </Col>
+            </Row>
             <div className="text-box">
             <p>
               I&apos;m a full stack developer passionate about creating elegant and 
@@ -60,9 +62,6 @@ const Header = () => {
               whether in user interfaces or development tasks.
             </p>
             </div>
-         
-          </Col>
-        </Row>
       </Container>
     </section>
   );

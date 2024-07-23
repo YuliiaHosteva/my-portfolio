@@ -7,12 +7,12 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-item-center">
-        <Col size={12} sm={6}>
+        <Col size={8} sm={6}>
         <a href="#home">
         <img src={logo} alt="Logo" className="logo" />
         </a>
          </Col>
-          <Col size={12} sm={6} className="text-center text-sm-end">
+          <Col size={8} sm={6} className="text-center text-sm-end">
           <div className="social-icons">
               <a href="https://www.linkedin.com/in/yuliia-hosteva/" target="_blank" className="social-link">
                 <svg className="icon" width={18} height={18}>
@@ -35,12 +35,13 @@ const Footer = () => {
           </svg>
               </a>
             </div>
-            <p className="footer-text">
+            
+          </Col>
+        </Row>
+        <p className="footer-text">
               Copyright 2024. All Rights Reserved.
               The idea is borrowed from webdecoded.
             </p>
-          </Col>
-        </Row>
       </Container>
     </footer>
   );
