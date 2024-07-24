@@ -14,6 +14,7 @@ import projImg6 from '../assets/img/Web Studio.png';
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState('All');
 
   const projects = [
     {
@@ -68,6 +69,7 @@ const Projects = () => {
 
   const handleFilterChange = (category) => {
     setFilter(category);
+    setActiveFilter(category);
   };
 
   const filteredProjects = projects.filter(project => filter === 'All' || project.category === filter);
@@ -78,15 +80,37 @@ const Projects = () => {
         <Row>
           <Col>
             <h2>Projects</h2>
-            <p className="project-text">
-              In this section, you can familiarize yourself with my projects.
-            </p>
             <div className="filters">
-              <button onClick={() => handleFilterChange('All')}>All projects</button>
-              <button onClick={() => handleFilterChange('Web Development')}>Web Development</button>
-              <button onClick={() => handleFilterChange('Fitness')}>Fitness</button>
-              <button onClick={() => handleFilterChange('Culture')}>Culture</button>
-              <button onClick={() => handleFilterChange('Productivity')}>Productivity</button>
+              <button
+                onClick={() => handleFilterChange('All')}
+                className={activeFilter === 'All' ? 'active' : ''}
+              >
+                All projects
+              </button>
+              <button
+                onClick={() => handleFilterChange('Web Development')}
+                className={activeFilter === 'Web Development' ? 'active' : ''}
+              >
+                Web Development
+              </button>
+              <button
+                onClick={() => handleFilterChange('Fitness')}
+                className={activeFilter === 'Fitness' ? 'active' : ''}
+              >
+                Fitness
+              </button>
+              <button
+                onClick={() => handleFilterChange('Culture')}
+                className={activeFilter === 'Culture' ? 'active' : ''}
+              >
+                Culture
+              </button>
+              <button
+                onClick={() => handleFilterChange('Productivity')}
+                className={activeFilter === 'Productivity' ? 'active' : ''}
+              >
+                Productivity
+              </button>
             </div>
             <TrackVisibility>
               {({ isVisible }) => (

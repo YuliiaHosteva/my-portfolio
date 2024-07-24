@@ -56,11 +56,9 @@ const Header = () => {
             </Row>
             <div className="text-box">
             <p>
-              I&apos;m a full stack developer passionate about creating elegant and 
-              efficient solutions to complex problems. With a keen eye for design and 
-              a thirst for new challenges, I push the boundaries of what&apos;s possible, 
-              whether in user interfaces or development tasks.
-            </p>
+            As a full-stack developer, I am passionate about crafting elegant and efficient solutions to complex problems. 
+            With a sharp eye for design and an insatiable thirst for new challenges, 
+            I continuously push the boundaries of what's possible in both user interfaces and development tasks.            </p>
             </div>
       </Container>
     </section>
