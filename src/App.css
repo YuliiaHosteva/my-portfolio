@@ -358,7 +358,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   /* font-family: "Bungee Shade", sans-serif;   */
   /* font-family: "Shadows Into Light", cursive ;   */
   /* font-family: "Honk", system-ui; */
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: 0.8px;
   line-height: 1;
@@ -413,7 +413,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 50px;
+  font-size: 35px;
 }
 
 
