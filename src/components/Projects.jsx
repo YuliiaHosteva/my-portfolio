@@ -24,6 +24,7 @@ const Projects = () => {
       description: 'Individual project "MoviesHunt". A responsive movie search website using React, Redux, and TMDb API. The website allows users to search for movies by title and view movie details.',
       imgUrl: projImg1,
       url: 'https://goit-react-hw-05-amber.vercel.app',
+      gitUrl: 'https://github.com/YuliiaHosteva/goit-react-hw-05'
     },
     {
       id: 2,
@@ -32,6 +33,8 @@ const Projects = () => {
       description: 'Individual project "Phonebook". An application designed to manage contacts efficiently. The application allows users to add, edit, delete, and search for contacts.',
       imgUrl: projImg2,
       url: 'https://goit-react-hw-08-one-livid.vercel.app',
+      gitUrl: 'https://github.com/YuliiaHosteva/goit-react-hw-08'
+
     },
     {
       id: 3,
@@ -40,6 +43,8 @@ const Projects = () => {
       description: 'This website is a fitness application that offers various features for workouts and healthy lifestyle support. It contains information about available workouts, programs, dietary advice, and useful resources for achieving fitness goals. ',
       imgUrl: projImg3,
       url: 'https://jackavryashnik.github.io/fitnes-app/',
+      gitUrl: 'https://github.com/jackavryashnik/fitnes-app'
+
     },
     {
       id: 4,
@@ -48,6 +53,8 @@ const Projects = () => {
       description: 'This website is a project dedicated to Ukrainian embroidered shirts (vyshyvanka) and culture. It contains information about traditional Ukrainian embroidered shirts, their history, significance, and styles.',
       imgUrl: projImg4,
       url: 'https://veronikavaraksina1.github.io/command-project-vyshyvanka-vibes/',
+      gitUrl: 'https://github.com/VeronikaVaraksina1/command-project-vyshyvanka-vibes',
+
     },
     {
       id: 5,
@@ -56,6 +63,8 @@ const Projects = () => {
       description: 'Task Pro, inspired by Trello, allows users to register, authenticate with Google, create custom boards and tasks, and set task details. It also supports dark, light, and violet themes.',
       imgUrl: projImg5,
       url: 'https://task-pro-kohl.vercel.app/welcome',
+      gitUrl: 'https://github.com/jackavryashnik/task-pro',
+
     },
     {
       id: 6,
@@ -64,6 +73,8 @@ const Projects = () => {
       description: '"WebStudio" is a website for presenting digital solutions for businesses. The website features a responsive design and is built using HTML and CSS.',
       imgUrl: projImg6,
       url: 'https://yuliiahosteva.github.io/goit-markup-hw-06/',
+      gitUrl: 'https://github.com/YuliiaHosteva/goit-markup-hw-06',
+
     },
   ];
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import icons from '../assets/img/icons.svg';
-import logo from '../assets/img/yh-logo.png';
+import logo from '../assets/img/yh-high-resolution-logo-transparent.png';
 
 const NavigationBar = () => {
   const [activeLink, setActiveLink] = useState('home');

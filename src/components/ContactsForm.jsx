@@ -118,7 +118,7 @@ const ContactForm = () => {
               )}
             </TrackVisibility>
           </Col>
-          <Col md={6}>
+          <Col md={6} className={addressVisible ? 'd-none d-md-block' : ''}>
             {addressVisible && (
               <TrackVisibility>
                 {({ isVisible }) => (
