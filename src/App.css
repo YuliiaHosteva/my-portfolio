@@ -456,11 +456,11 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 .header h1 {
  margin-bottom: 30px;
- font-size: 55px;
+ font-size: 45px;
 }
 
 .gradient-text {
-  font-size: 55px;
+  font-size: 45px;
 }
 
 .header p {
@@ -908,6 +908,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   font-size: 40px;
   font-weight: 600;
   margin-bottom: 20px;
+  color: white;
 }
 
 .contact form input,
