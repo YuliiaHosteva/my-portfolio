@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import icons from '../assets/img/icons.svg';
-import logo from '../assets/img/yh-high-resolution-logo-transparent.png';
+import logo from '../assets/img/yh-high-resolution-logo-transparent-2.png';
 
 const NavigationBar = () => {
   const [activeLink, setActiveLink] = useState('home');
@@ -64,7 +64,7 @@ const NavigationBar = () => {
               className={activeLink === 'contact' ? 'active navbar-link' : 'navbar-link'}
               onClick={() => onUpdateActiveLink('contact')}
             >
-              Contact
+              Contacts
             </Nav.Link>
           </Nav>
           <span className="navbar-text">

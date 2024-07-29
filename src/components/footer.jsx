@@ -1,6 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import icons from '../assets/img/icons.svg';
-import logo from '../assets/img/yh-high-resolution-logo-transparent.png';
+import logo from '../assets/img/yh-high-resolution-logo-transparent-2.png';
 
 const Footer = () => {
   return (
