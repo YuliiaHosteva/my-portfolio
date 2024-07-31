@@ -110,7 +110,7 @@ const ContactForm = () => {
               )}
             </div>
           </Col>
-          <Col md={6} className={addressVisible ? 'd-none d-md-block' : ''}>
+          <Col md={6} className={addressVisible ? 'd-none d-xl-block' : ''}>
             {addressVisible && (
               <div className="address-box">
                 <address>
