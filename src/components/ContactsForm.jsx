@@ -52,7 +52,7 @@ const ContactForm = () => {
 
   return (
     <section className="contact" id="contact">
-      <Container>
+      <Container className="contact-bx">
         <Row className="align-items-center">
           <Col md={6}>
             <h2>Let's Connect</h2>
