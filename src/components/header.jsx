@@ -63,7 +63,7 @@ const Header = () => {
             </p>
           </div>
           <div className="cta-buttons">
-            <a href={cvFile} download className="cta-btn">Download CV</a>
+            <a href={cvFile} download="Yuliia_Hosteva_CV.pdf" className="cta-btn">Download CV</a>
           </div>
 
       </Container>
