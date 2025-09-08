@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import cvFile from '../assets/img/yuliia_hosteva_cv.pdf'
 
 const Header = () => {
   const [rotationIndex, setRotationIndex] = useState(0);
@@ -62,7 +63,7 @@ const Header = () => {
             </p>
           </div>
           <div className="cta-buttons">
-           <a href="/public/yuliia_hosteva_cv.pdf" download className="cta-btn">Download CV</a>
+            <a href={cvFile} download className="cta-btn">Download CV</a>
           </div>
 
       </Container>
