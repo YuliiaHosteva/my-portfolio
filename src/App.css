@@ -350,17 +350,19 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   padding: 0 20px;
 }
 
-.header .tagLine {
-  font-family: "Lobster", cursive;  
-  font-weight: 400;
-  letter-spacing: 0.8px;
-  font-size: 18px;
-  display: inline-block;
-  color: #e321c9;;
-  margin-bottom: 40px;
-  line-height: 1.5em;
+.tagLine {
+  font-size: 14px;
+  color: #ff4dd2;
+  font-family: "Share Tech Mono", monospace; 
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 12px;
 }
-
+.emph {
+  color: #0ff;
+  font-weight: 600;
+  text-shadow: 0 0 6px #0ff, 0 0 12px #0ff;
+}
 .align-items-center {
   margin-left: 80px;
 }
@@ -369,7 +371,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   /* font-family: "Bungee Shade", sans-serif;   */
   /* font-family: "Shadows Into Light", cursive ;   */
   /* font-family: "Honk", system-ui; */
-  font-size: 40px;
+  font-size: 20px;
   font-weight: 600;
   letter-spacing: 0.8px;
   line-height: 1;
@@ -416,6 +418,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 .gradient-text {
   font-family: "Bungee Shade", sans-serif;  
+    font-size: 25px;
   background: linear-gradient(
     90.21deg,
     rgba(240, 11, 81, 0.5) -5.91%,
@@ -424,8 +427,39 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-size: 35px;
 }
+
+.cta-buttons {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.cta-btn {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ff4dd2;
+  background: transparent;
+  border: 2px solid #ff4dd2;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 6px #ff4dd2, 0 0 12px #ff4dd2;
+  box-shadow: 0 0 8px rgba(0,255,255,0.4), inset 0 0 8px rgba(0,255,255,0.3);
+}
+
+.cta-btn:hover {
+  background: #0ff;
+  color: #111;
+  text-shadow: none;
+  box-shadow: 0 0 16px #0ff, 0 0 32px #0ff;
+  border: 2px solid  #0ff;
+
+
+}
+
 
 
 @media (min-width: 768px) {
@@ -466,16 +500,22 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 .header h1 {
  margin-bottom: 30px;
- font-size: 45px;
+ font-size: 40px;
 }
 
 .gradient-text {
-  font-size: 45px;
+  font-size: 40px;
 }
 
 .header p {
   width: 420px;
   font-size: 16px;
+}
+
+.cta-buttons {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .dynamic-text-wrapper {
@@ -498,7 +538,14 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     padding: 200px 0 150px 0;
   }
 
- 
+  .header h1 {
+ margin-bottom: 30px;
+ font-size: 45px;
+}
+
+.gradient-text {
+  font-size: 45px;
+}
 
   .header p {
     width: 600px;
@@ -516,6 +563,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
   }
 
+
   .header::before {
     left: 55%;  
   }
@@ -528,6 +576,15 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     width: 550px; 
     height: 570px; 
   }
+
+    .header h1 {
+ margin-bottom: 30px;
+ font-size: 50px;
+}
+
+.gradient-text {
+  font-size: 50px;
+}
 
 }
 

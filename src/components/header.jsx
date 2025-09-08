@@ -8,7 +8,7 @@ const Header = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const period = 2000;
 
-  const rotatingTexts = useMemo(() => ['Yuliia Hosteva', 'Web Developer', 'Freelancer'], []);
+  const rotatingTexts = useMemo(() => ['WEB APPS', 'DESIGNS', 'BACKENDS'], []);
 
   useEffect(() => {
     const tick = () => {
@@ -47,19 +47,24 @@ const Header = () => {
       <Container>
         <Row className="align-items-center">
           <Col xs={12} md={6} xl={7}>
-            <span className="tagLine">Welcome to my Portfolio</span>
+            <span className="tagLine"> Portfolio — Selected Work & Experiments</span>
             <h1 className="dynamic-text-wrapper">
-              I&apos;m <span className="wrap gradient-text">{currentText}</span>
+              I build <span className="wrap gradient-text">{currentText}</span>
             <span className="cursor"></span> 
             </h1>
             </Col>
             </Row>
-            <div className="text-box">
+          <div className="text-box">
             <p>
-            As a full-stack developer, I am passionate about crafting elegant and efficient solutions to complex problems. 
-            With a sharp eye for design and an insatiable thirst for new challenges, 
-            I continuously push the boundaries of what's possible in both user interfaces and development tasks.            </p>
-            </div>
+            I craft <span className="emph">bold, responsive interfaces</span> and
+            <span className="emph"> high-performance back-ends</span>. Smooth visuals,
+            clean architecture, real-world impact. Let’s ship the future.
+            </p>
+          </div>
+          <div className="cta-buttons">
+           <a href="/public/HOSTEVA YULIIA-CV.pdf" download className="cta-btn">Download CV</a>
+          </div>
+
       </Container>
     </section>
   );
