@@ -1198,28 +1198,71 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /************ Footer Css ************/
 
 .footer {
-  padding: 50px 0 30px 0;
+  padding: 50px 0 25px 0;
+}
+
+.footer-text {
+  margin-top: 12px;
+  font-size: 10px;
+  text-align: center;
+  color: #0ff;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  position: relative;
+  text-shadow: 0 0 6px #0ff, 0 0 12px #0ff, 0 0 24px #0ff;
+  animation: flicker 2.5s infinite alternate;
 }
 
 .col-sm-6 {
   width: 50% !important;
-
 }
 
-.text-center {
-align-content: center;
-
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+}
+.glitch::before {
+  animation: glitchTop 2s infinite linear alternate-reverse;
+  color: #f0f;
+  text-shadow: -2px 0 #f0f;
+}
+.glitch::after {
+  animation: glitchBottom 1.8s infinite linear alternate-reverse;
+  color: #0ff;
+  text-shadow: -2px 0 #0ff;
 }
 
-.footer-text {
-  font-weight: 400;
-  font-size: 12px;
-  color: #ffffff;
-  margin-top: 50px;
-  letter-spacing: 0.5px;
-  text-align: center;
-
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.3; }
 }
+
+@keyframes glitchTop {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(0, 9999px, 20px, 0); transform: translate(-2px, -2px); }
+  20% { clip: rect(0, 9999px, 5px, 0); transform: translate(2px, 2px); }
+  30% { clip: rect(0, 9999px, 15px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+@keyframes glitchBottom {
+  0% { clip: rect(0, 9999px, 0, 0); }
+  10% { clip: rect(10px, 9999px, 9999px, 0); transform: translate(2px, 2px); }
+  20% { clip: rect(5px, 9999px, 9999px, 0); transform: translate(-2px, -2px); }
+  30% { clip: rect(15px, 9999px, 9999px, 0); }
+  100% { clip: rect(0, 9999px, 0, 0); }
+}
+
+
+
 
 .react-multi-carousel-track {
   padding: 0 5px !important;
@@ -1255,6 +1298,11 @@ align-content: center;
     line-height: 1.1em;
   }
 
+  .footer-text {
+      font-size: 10px;
+
+  }
+
 }
 
 @media screen and (max-height: 375px) {
@@ -1266,6 +1314,11 @@ align-content: center;
   }
   .header h1 {
     margin-bottom: 2px;
+  }
+
+  .footer-text {
+      font-size: 10px;
+
   }
 }
 
