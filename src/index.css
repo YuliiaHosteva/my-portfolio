@@ -1,14 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet');
+
 
 :root {
-  font-family: 'Poppins', sans-serif;
+  --cp-heading: 'Orbitron', sans-serif;
+  --cp-body: 'Share Tech Mono', monospace;
   font-size: 14px;
   font-weight: 400;
   letter-spacing: -0.02em;
+   --cp-bg: #0b0f16;             /* основний темний */
+  --cp-panel: rgba(20, 24, 36, 0.6);
+  --cp-border1: #00fff0;        /* неон бірюза */
+  --cp-border2: #ff00f5;        /* неон фуксія */
+  /* --cp-border3: #ffe600;        неон жовтий */
+  --cp-text: #e6f3ff;
+  --cp-accent: #6cf3ff;
+  --cp-muted: #8aa3b3;
+
+  --cp-shadow-a: 0 0 12px #00fff0, 0 0 22px #ff00f5;
+  --cp-shadow-b: 0 0 16px #ffe600, 0 0 34px #00fff0;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--cp-body);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -23,6 +37,7 @@ h6 {
   margin: 0;
   padding: 0;
   line-height: normal;
+  font-family: var(--cp-heading);
 }
 
 p,
