@@ -1051,163 +1051,10 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 /************ Contact Css ************/
 
-.contact {
-  width: 90%;
-  margin: 0 auto;
-  position: relative;
-  background: rgba(18, 22, 33, 0.6);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  backdrop-filter: blur(8px);
-
-
-}
-
-.contact-bx {
-  padding: 50px 50px;
-  display: block;
-  margin-bottom: 80px;
-
-}
-
-.contact-bx::after {
-  content: '';
-  position: absolute;
-  left: 20px; 
-  right: 0px;
-  bottom: 0px;
-  height: 100%;
-  /* backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); */
-  z-index: -1;
-   background: radial-gradient(circle at 90% 80%, #ff6bd6, transparent 20%); 
-  opacity: .6;
-  /* border-radius:24px; */
-
-}
 
 
 
-
-.form-container {
-  position: relative;
-  padding: 0 5px 0 5px;
-  z-index: 1;
-}
-
-.contact h2 {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  color: white;
-  padding-left: 15px;
-  text-shadow: 0 0 6px var(--cp-border1), 0 0 12px var(--cp-border2);
-
-}
-
-.contact form input,
-.contact form textarea  {
-  width: 100%;
-  background:  rgba(219, 217, 217, 0.832);
-  border: 1px solid #0bf4f3;
-  /* border-radius: 15px; */
-  color: #161515;
-  margin-bottom: 15px;
-  padding: 15px 20px;
-  font-weight: 400;
-  font-size: 16px;
-  letter-spacing: 0.8px;
-  transition: 0.3s ease-in-out;
-}
-
-.contact form textarea {
-  height: 55%;
-  width: 100%;
-}
-
-.contact form input:focus,
-.contact form textarea:focus {
-  color: #090909;
-  border: 1px solid #0bf4f3;
-  box-shadow:  0 0 10px #0bf4f3,  0 0 10px #0bf4f3 inset;
-}
-
-.contact form input::placeholder,
-.contact form textarea::placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  color: #131212;
-}
-
-.contact form input:focus::placeholder,
-.contact form textarea:focus::placeholder {
-    color:#e321c9;
-    opacity: 0.8;
-}
-
-.contact form button {
-  font-weight: 700;
-  width: 180px;
-  padding: 14px 48px;
-  font-size: 18px;
-  position: relative;
-  transition: 0.3s ease-in-out;
-  /* border-radius: 15px; */
-  background-color: inherit;
-  color:#e321c9;
-  box-shadow:  0 0 15px #0bf4f3 inset,  0 0 15px #0bf4f3 inset;
-  margin-bottom: 50px;
-  animation: shadowAnimation 2s infinite;
-}
-
-  @keyframes shadowAnimation {
-    0% {
-        box-shadow: 0 0 15px #0bf4f3 inset;
-        border: 1px solid #0bf4f3;
-        color: #0bf4f3;
-
-    }
-    50% {
-        box-shadow: 0 0 20px #e321c9 inset;
-        border: 1px solid #e321c9;
-        color:#e321c9;
-
-
-    }
-    100% {
-        box-shadow: 0 0 25px white inset;
-        border: 1px solid white;
-        color: white;
-    }
-}
-
-
-.status-message {
-  position: absolute;
-  font-size: 16px;
-  bottom: -40px; 
-  left: 0;
-  right: 0;
-  margin: auto;
-  text-align: center;
-  padding: 10px 20px;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.status-message.success {
-  color:#0bf4f3;
-}
-
-.status-message.danger {
-  color:#e321c9;
-}
-
-.adress-box {
-  display: none;
-}
-
-
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) { 
 
 
   .contact {
@@ -1227,68 +1074,254 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   .adress-box {
     display: none;
   }
+}  */
+
+/* секція */
+
+.contact-bx .contact-grid{
+  display: grid;
+  grid-template-columns: minmax(520px, 1fr) minmax(320px, 420px);
+  row-gap: 24px;
+  align-items: start;     /* обидві колонки однакової висоти */
 }
-  
 
-@media screen and (min-width: 1200px) {
-  .col-md-6 {
-    width: 50% !important;
-
-  }
-
-  .adress-box {
-    display: block;
-    margin: 0;
-  
-  }
-  
-  .contact-list {
-    display: block;
-    margin-left: 50px;
-  }
-  
-  .contact-link {
-    display: flex;
-    width: 90%;
-    /* border-radius: 15px; */
-    border: 1px solid #0bf4f3;
-    margin-bottom: 25px;
-    background:  rgba(219, 217, 217, 0.832);
-  }
-
-  .contact-link:hover {
-    border: 1px solid #0bf4f3;
-    box-shadow:  0 0 10px #0bf4f3,  0 0 10px #0bf4f3 inset;
-  } 
-  
-  .link {
-    color: #161515;
-    padding: 20px;
-    z-index: 1;
-  }
-  
-  .link:hover {
-    z-index: 0;
-    transition: 0.3s ease-in-out;
-    color:#e321c9;
-  
-  }
-
-  .icon-contact {
-    stroke-width: 0;
-    stroke: none;
-    fill:  #090909;
-    width: 42px;
-    height: 42px;
-    padding: 5px;
-    align-items: center;
-    justify-content: center;
-    margin: 10px 0 0 15px;
-    line-height: 1;
-    z-index: 1;
-  }
-  
+.cp-contact {
+  padding: 80px 0;
+  background: linear-gradient(180deg, rgba(10,14,22,0.7), rgba(6,8,16,0.7));
+  backdrop-filter: blur(6px);
 }
+
+.cp-title {
+  margin-block: 0 18px;
+}
+
+/* форма */
+
+.cp-form{
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+
+.cp-honeypot { /* сховане поле для ботів */
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px; opacity: 0; pointer-events: none;
+}
+
+.cp-field {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cp-field:nth-last-child(2) { grid-column: 1 / -1; } /* textarea full width */
+.cp-field label {
+  font-family: var(--cp-body);
+  font-size: 12px;
+  color: var(--cp-muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.cp-field input,
+.cp-field textarea {
+  font-family: var(--cp-body);
+  color: var(--cp-text);
+  background: rgba(15,18,28,0.9);
+  border: 1px solid rgba(0,255,240,0.28);
+  padding: 12px 14px;
+  outline: none;
+  transition: box-shadow .2s, border-color .2s, transform .1s;
+}
+
+.cp-field input:focus,
+.cp-field textarea:focus {
+  border-color: var(--cp-border1);
+  box-shadow: 0 0 12px var(--cp-border1), 0 0 24px rgba(255,0,245,0.35);
+  transform: translateY(-1px);
+}
+
+.cp-field.is-error input,
+.cp-field.is-error textarea {
+  border-color: #ff4d6d;
+  box-shadow: 0 0 10px rgba(255,77,109,0.6);
+}
+
+.cp-error {
+  color: #ff8fa3;
+  font-size: 12px;
+  margin-top: -2px;
+}
+
+/* кнопка */
+.cp-btn.neon {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 12px 18px;
+  border: 2px solid var(--cp-neon-a);
+  color: var(--cp-text);
+  background: transparent;
+  font-family: var(--cp-heading);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform .15s ease, box-shadow .2s ease, opacity .2s;
+}
+.cp-btn.neon.wide { min-width: 160px; }
+.cp-btn.neon:disabled { opacity: .6; cursor: not-allowed; }
+
+.cp-btn.neon::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(0,255,240,0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform .6s;
+}
+.cp-btn.neon:hover::after { transform: translateX(100%); }
+.cp-btn.neon:hover {
+  box-shadow: 0 0 10px var(--cp-neon-a), 0 0 20px var(--cp-neon-b);
+  transform: translateY(-1px);
+}
+
+/* статус */
+.cp-status { margin-top: 10px; min-height: 24px; }
+.cp-alert {
+  display: inline-block;
+  font-family: var(--cp-body);
+  font-size: 14px;
+  padding: 8px 12px;
+  /* border-radius: 10px; */
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(15,18,28,0.8);
+}
+.cp-alert.ok { box-shadow: 0 0 10px rgba(0,255,170,0.4); color: #a7ffea; }
+.cp-alert.error { box-shadow: 0 0 10px rgba(255,77,109,0.4); color: #ffb3c0; }
+
+/* права колонка */
+.cp-aside{
+  align-self: stretch;       /* ключове */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(15,18,28,.78);
+  border: 1px solid rgba(108,243,255,.28);
+  padding: 18px;
+  box-shadow:
+    0 0 0 1px rgba(255,0,245,.12) inset,
+    0 0 18px rgba(0,255,240,.08);    /* твердіший glow, без «пилюки» */
+}
+.cp-aside__title {
+  font-family: var(--cp-heading);
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--cp-accent);
+}
+.cp-list { 
+  list-style: none; 
+  margin: 0; padding: 0; 
+  display: grid; 
+  gap: 8px; 
+}
+.cp-list__item {
+  display: grid; 
+  grid-template-columns: 20px 1fr; 
+  align-items: center; gap: 10px;
+}
+.cp-list .link { 
+  color: var(--cp-text); 
+  text-decoration: none; 
+}
+.cp-list .link:hover { 
+  text-decoration: underline; 
+}
+
+/* базовий колір береться з тексту */
+.cp-aside .cp-list__item { 
+  display: grid; 
+  grid-template-columns: 22px 1fr; 
+  gap: 10px; 
+  align-items: center;
+  line-height: 1.35;
+  color: var(--cp-text);
+}
+
+.cp-aside .cp-list__item .icon-contact {
+  width: 18px; 
+  height: 18px;
+  display: block;
+  flex-shrink: 0;
+  fill: currentColor;           /* для fill-іконок зі sprite */
+  opacity: .95;
+  transition: transform .15s, filter .2s, opacity .2s;
+  filter: drop-shadow(0 0 2px rgba(0,255,240,.25));
+}
+
+.cp-aside .cp-list__item .link {
+  color: inherit; 
+  text-decoration: none;
+  /* transition: color .15s ease, text-shadow .2s ease; */
+  align-self: center;
+}
+
+/* hover/фокус — неоновий підсвіт */
+.cp-aside .cp-list__item:hover,
+.cp-aside .cp-list__item:focus-within {
+  color: var(--cp-neon-a);
+  text-shadow: 0 0 8px rgba(108,243,255,.45);
+}
+
+.cp-aside .cp-list__item:hover .icon-contact,
+.cp-aside .cp-list__item:focus-within .icon-contact {
+  /* opacity: 1; */
+  transform: scale(1.05);
+  filter:
+    drop-shadow(0 0 4px rgba(0,255,240,.6))
+    drop-shadow(0 0 8px rgba(255,0,245,.35));
+}
+
+
+/* адаптив */
+@media (max-width: 768px) {
+  .cp-form { grid-template-columns: 1fr; }
+  .cp-btn.neon { justify-self: stretch; }
+
+
+}
+
+  @media (min-width: 1024px){
+  .cp-aside{
+    position: sticky;
+    top: calc(var(--navH, 72px) + 24px); /* піджени під висоту хедера */
+  }
+}
+
+/* заголовок секції — винеси над грідом (у тебе вже так),
+   тут просто додаємо відступ, щоб обидві колонки стартували рівно */
+.cp-title{
+  margin-bottom: 18px;
+}
+
+/* планшет і мобільний — у стовпчик */
+@media (max-width: 992px){
+  .contact-bx .contact-grid{
+    grid-template-columns: 1fr;
+  }
+  .cp-form{ grid-template-columns: 1fr; }
+  .cp-aside{ position: static; height: auto; }
+}
+  @media (max-width: 1200px){
+  .contact-bx .contact-grid{
+    grid-template-columns: minmax(460px, 1fr) minmax(300px, 380px);
+  }
+    .cp-aside .cp-list__item .icon-contact {
+  width: 22px; 
+  height: 22px;
+}
+}
+ 
+
 
 
 

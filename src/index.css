@@ -19,6 +19,9 @@
 
   --cp-shadow-a: 0 0 12px #00fff0, 0 0 22px #ff00f5;
   --cp-shadow-b: 0 0 16px #ffe600, 0 0 34px #00fff0;
+
+  --cp-neon-a:#00fff0; 
+  --cp-neon-b:#ff00f5;
 }
 
 body {
