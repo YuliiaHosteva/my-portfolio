@@ -4,6 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Shadows+Into+Light&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
 
+html { scroll-behavior: smooth; }
+
+section { scroll-margin-top: var(--navH, 80px); }
 
 
 :root {
@@ -135,12 +138,25 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   font-size: 18px;
   opacity: 0.75;
   margin: 0 auto;
+  transition: opacity .2s ease, color .2s ease, text-shadow .2s ease;
 }
 
-nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
+
+nav.navbar .navbar-nav a.nav-link.navbar-link:hover {
+  opacity: 1;
+  color: #ffffff;
+}
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
   opacity: 1;
   color: white;
+  text-shadow: 0 0 8px #0ff;
+}
+
+nav.navbar .navbar-nav .nav-link.navbar-link:focus,
+nav.navbar .navbar-nav .nav-link.navbar-link:focus-visible {
+  outline: 2px dashed rgba(0,255,255,.45);
+  outline-offset: 2px;
+  text-shadow: none;           /* ключове: не дублюємо неон active */
 }
 
 span.navbar-text {
