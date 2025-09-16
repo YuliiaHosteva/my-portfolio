@@ -39,26 +39,46 @@ const ContactForm = () => {
 
   const onBlur = (k) => setTouched(prev => ({ ...prev, [k]: true }));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (form.botField) return; // спам-бот
-    if (Object.keys(errors).length) {
-      setStatus({ type: 'error', msg: 'Please fill in all required fields correctly.' });
-      setTimeout(() => setStatus({ type: null, msg: '' }), 4000);
-      return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (form.botField) return; // honeypot
+  if (Object.keys(errors).length) {
+    setStatus({ type: 'error', msg: 'Please fill in all required fields correctly.' });
+    setTimeout(() => setStatus({ type: null, msg: '' }), 4000);
+    return;
+  }
+
+  setSending(true);
+  setStatus({ type: null, msg: '' });
+
+  try {
+    const fd = new FormData();
+    fd.append("firstName", form.firstName);
+    fd.append("lastName", form.lastName);
+    fd.append("email", form.email);
+    fd.append("phone", form.phone);
+    fd.append("message", form.message);
+
+    const res = await fetch("https://formspree.io/f/mpwjegle", {
+      method: "POST",
+      body: fd,
+      headers: { Accept: "application/json" },
+    });
+
+    if (res.ok) {
+      setForm(initial);
+      setTouched({});
+      setStatus({ type: 'ok', msg: 'Message sent successfully. Thank you!' });
+    } else {
+      setStatus({ type: 'error', msg: 'Failed to send. Please try again later.' });
     }
-    setSending(true);
-    setStatus({ type: null, msg: '' });
-
-    // імітація надсилання (підключиш EmailJS/Formspree — вставиш запит тут)
-    await new Promise(r => setTimeout(r, 1400));
-
+  } catch (err) {
+    setStatus({ type: 'error', msg: 'Something went wrong. Please try again later.' });
+  } finally {
     setSending(false);
-    setForm(initial);
-    setTouched({});
-    setStatus({ type: 'ok', msg: 'Message sent successfully. Thank you!' });
     setTimeout(() => setStatus({ type: null, msg: '' }), 5000);
-  };
+  }
+};
 
   return (
     <section className="contact cp-contact" id="contact" aria-labelledby="contact-title">
@@ -85,13 +105,18 @@ const ContactForm = () => {
                 <input
                   id="firstName"
                   type="text"
+                  autoComplete="given-name"
                   value={form.firstName}
                   onChange={(e) => onChange('firstName', e.target.value)}
                   onBlur={() => onBlur('firstName')}
                   placeholder="John"
                   required
                 />
-                {touched.firstName && errors.firstName && <span className="cp-error">{errors.firstName}</span>}
+                <span
+                  className={`cp-error ${touched.firstName && errors.firstName ? 'show' : ''}`}
+                >
+                  {touched.firstName && errors.firstName ? errors.firstName : '\u00A0'}
+                </span>
               </div>
 
               <div className={`cp-field ${touched.lastName && errors.lastName ? 'is-error' : ''}`}>
@@ -99,13 +124,18 @@ const ContactForm = () => {
                 <input
                   id="lastName"
                   type="text"
+                  autoComplete="family-name"
                   value={form.lastName}
                   onChange={(e) => onChange('lastName', e.target.value)}
                   onBlur={() => onBlur('lastName')}
                   placeholder="Doe"
                   required
                 />
-                {touched.lastName && errors.lastName && <span className="cp-error">{errors.lastName}</span>}
+                <span
+                  className={`cp-error ${touched.lastName && errors.lastName ? 'show' : ''}`}
+                >
+                  {touched.lastName && errors.lastName ? errors.lastName : '\u00A0'}
+                </span>
               </div>
 
               <div className={`cp-field ${touched.email && errors.email ? 'is-error' : ''}`}>
@@ -113,13 +143,18 @@ const ContactForm = () => {
                 <input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   value={form.email}
                   onChange={(e) => onChange('email', e.target.value)}
                   onBlur={() => onBlur('email')}
                   placeholder="john@example.com"
                   required
                 />
-                {touched.email && errors.email && <span className="cp-error">{errors.email}</span>}
+                  <span
+                    className={`cp-error ${touched.email && errors.email ? 'show' : ''}`}
+                  >
+                    {touched.email && errors.email ? errors.email : '\u00A0'}
+                  </span>
               </div>
 
               <div className={`cp-field ${touched.phone && errors.phone ? 'is-error' : ''}`}>
@@ -127,13 +162,18 @@ const ContactForm = () => {
                 <input
                   id="phone"
                   type="tel"
+                  autoComplete="tel"
                   value={form.phone}
                   onChange={(e) => onChange('phone', e.target.value)}
                   onBlur={() => onBlur('phone')}
                   placeholder="+49 151 234567"
                   required
                 />
-                {touched.phone && errors.phone && <span className="cp-error">{errors.phone}</span>}
+              <span
+                className={`cp-error ${touched.phone && errors.phone ? 'show' : ''}`}
+              >
+                {touched.phone && errors.phone ? errors.phone : '\u00A0'}
+              </span>
               </div>
 
               <div className={`cp-field ${touched.message && errors.message ? 'is-error' : ''}`}>
@@ -147,7 +187,11 @@ const ContactForm = () => {
                   placeholder="Tell me about your project…"
                   required
                 />
-                {touched.message && errors.message && <span className="cp-error">{errors.message}</span>}
+                <span
+                  className={`cp-error ${touched.message && errors.message ? 'show' : ''}`}
+                >
+                  {touched.message && errors.message ? errors.message : '\u00A0'}
+                </span>
               </div>
 
               <button
@@ -158,6 +202,7 @@ const ContactForm = () => {
               >
                 {sending ? 'Sending…' : 'Send'}
               </button>
+            </form>
 
               <div className="cp-status" aria-live="polite">
                 {status.msg && (
@@ -166,8 +211,8 @@ const ContactForm = () => {
                   </div>
                 )}
               </div>
-            </form>
-          </Col>
+            </Col>
+
 
           <Col md={6} className={addressVisible ? '' : 'opacity-0'}>
             {addressVisible && (

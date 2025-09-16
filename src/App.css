@@ -1052,32 +1052,6 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 /************ Contact Css ************/
 
 
-
-
-/* @media screen and (min-width: 768px) { 
-
-
-  .contact {
-    padding: 50px 0 0 50px;
-   
-  }
-
-  .contact-bx::after {
-    left: 30px;
-    right: 0px;
-  }
-
-  .col-md-6 {
-    width: 80% !important;
-}
-  
-  .adress-box {
-    display: none;
-  }
-}  */
-
-/* секція */
-
 .contact-bx .contact-grid{
   display: grid;
   grid-template-columns: minmax(520px, 1fr) minmax(320px, 420px);
@@ -1101,7 +1075,6 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px 16px;
 }
 
 .cp-honeypot { /* сховане поле для ботів */
@@ -1146,11 +1119,6 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   box-shadow: 0 0 10px rgba(255,77,109,0.6);
 }
 
-.cp-error {
-  color: #ff8fa3;
-  font-size: 12px;
-  margin-top: -2px;
-}
 
 /* кнопка */
 .cp-btn.neon {
@@ -1185,18 +1153,55 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 }
 
 /* статус */
-.cp-status { margin-top: 10px; min-height: 24px; }
-.cp-alert {
-  display: inline-block;
-  font-family: var(--cp-body);
-  font-size: 14px;
-  padding: 8px 12px;
-  /* border-radius: 10px; */
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(15,18,28,0.8);
+  .cp-status{
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  pointer-events: none;        /* щоб не заважало клікам */
+  }
+  .cp-alert{
+    pointer-events: auto;        /* але всередину можна клікнути, якщо треба */
+    width: auto;
+    max-width: 100%;
+    font-size: 13px;
+    padding: 4px 8px;
+    margin: 0; 
+  }
+  .cp-error{
+  display: block;
+  min-height: 12px;       /* резерв висоти під один рядок */
+  font-size: 12px;
+  line-height: 1.3;
+  color: #ff8fa3;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .15s ease;
+  margin-top: 2px;        /* щоб не прилипало до інпуту */
 }
-.cp-alert.ok { box-shadow: 0 0 10px rgba(0,255,170,0.4); color: #a7ffea; }
-.cp-alert.error { box-shadow: 0 0 10px rgba(255,77,109,0.4); color: #ffb3c0; }
+
+/* коли є помилка — лише показуємо */
+.cp-error.show{
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.cp-alert.ok {
+  border: 1px solid rgba(0, 255, 170, 0.4);
+  color: #a7ffea;
+  background: rgba(0, 50, 40, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 170, 0.5);
+}
+
+.cp-alert.error {
+  border: 1px solid rgba(255, 77, 109, 0.5);
+  color: #ffb3c0;
+  background: rgba(50, 0, 20, 0.5);
+  box-shadow: 0 0 10px rgba(255, 0, 50, 0.5);
+}
+
 
 /* права колонка */
 .cp-aside{
@@ -1281,11 +1286,120 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     drop-shadow(0 0 8px rgba(255,0,245,.35));
 }
 
-
 /* адаптив */
+@media (max-width: 767px) {
+  .cp-contact .col-md-6{
+  transform: none !important;
+  filter: none !important;
+  perspective: none !important;
+ }
+  .cp-contact .cp-status{
+    position: fixed !important;
+    left: 12px; 
+    right: 12px;
+    bottom: max(200px, env(safe-area-inset-bottom));
+    z-index: 4000;
+    margin: 0 !important; 
+    text-align: center;
+    pointer-events: none;
+  }
+  .cp-contact .cp-alert{
+    display: inline-block; 
+    pointer-events: auto;
+    padding: 10px 12px; 
+    margin: 0 !important;
+  }
+
+  .cp-alert{
+    max-width: 100%;
+    font-size: 12px !important;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(20,22,30,0.95);
+    box-shadow: 0 0 12px rgba(255,0,245,.4),
+                0 0 18px rgba(0,255,240,.25);
+    animation: cpToastIn .25s ease-out;
+  }
+
+  @keyframes cpToastIn {
+    from { transform: translateY(12px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .cp-error{ 
+    min-height: 12px; 
+    font-size: 11px; 
+  }
+}
+
+
+
+@media screen and (min-width: 768px) { 
+
+  .cp-status{
+    grid-column: 1 / -1; 
+    padding: 8px 16px; 
+  }
+
+  .cp-contact .cp-alert{
+    display: inline-block; 
+    pointer-events: auto;
+    padding: 4px 8px; 
+    margin: 0 !important;
+  }
+
+  .cp-alert{
+    max-width: 100%;
+    font-size: 14px !important;
+
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(20,22,30,0.95);
+    box-shadow: 0 0 12px rgba(255,0,245,.4),
+                0 0 18px rgba(0,255,240,.25);
+    animation: cpToastIn .25s ease-out;
+  }
+
+  @keyframes cpToastIn {
+    from { transform: translateY(12px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+
+
+
+/* кіберпанк glow */
+.cp-alert.ok {
+  box-shadow: 0 0 12px rgba(0,255,170,0.5);
+  color: #a7ffea;
+}
+
+.cp-alert.error {
+  box-shadow: 0 0 12px rgba(255,77,109,0.5);
+  color: #ffb3c0;
+}
+}
+
+
 @media (max-width: 768px) {
-  .cp-form { grid-template-columns: 1fr; }
-  .cp-btn.neon { justify-self: stretch; }
+  .cp-form { 
+    grid-template-columns: 1fr; 
+  }
+  .cp-btn.neon { 
+    justify-self: stretch; 
+  }
+  .cp-status{
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  pointer-events: none;        /* щоб не заважало клікам */
+  }
+  .cp-alert{
+    pointer-events: auto;        /* але всередину можна клікнути, якщо треба */
+    width: auto;
+    max-width: 100%;
+    font-size: 13px;
+    padding: 10px 12px;
+    margin: 0;                   /* без зовнішніх відступів */
+  }
 
 
 }
@@ -1295,31 +1409,64 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     position: sticky;
     top: calc(var(--navH, 72px) + 24px); /* піджени під висоту хедера */
   }
+
 }
 
-/* заголовок секції — винеси над грідом (у тебе вже так),
-   тут просто додаємо відступ, щоб обидві колонки стартували рівно */
 .cp-title{
   margin-bottom: 18px;
 }
+
+@media (min-width: 993px){
+    .cp-form{
+  gap: 8px 12px;
+  }
+
+}
+
 
 /* планшет і мобільний — у стовпчик */
 @media (max-width: 992px){
   .contact-bx .contact-grid{
     grid-template-columns: 1fr;
   }
+    .cp-status{
+  grid-column: 1 / -1; 
+  }
+
   .cp-form{ grid-template-columns: 1fr; }
-  .cp-aside{ position: static; height: auto; }
+  .cp-aside{ 
+    position: static; 
+    height: auto; 
+  }
 }
-  @media (max-width: 1200px){
+
+
+  @media (min-width: 1200px){
   .contact-bx .contact-grid{
     grid-template-columns: minmax(460px, 1fr) minmax(300px, 380px);
   }
-    .cp-aside .cp-list__item .icon-contact {
+  .cp-status{
+    position: static;
+    grid-column: 1 / -1; 
+
+  }
+
+  .cp-aside .cp-list__item .icon-contact {
   width: 22px; 
   height: 22px;
 }
+  .cp-alert {
+    max-width: 640px;
+    font-size: 18px;
+    padding: 16px 22px;
+  }
+  .cp-error{ 
+    min-height: 22px; 
+  }
+
+
 }
+
  
 
 
