@@ -1,6 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import icons from '../assets/img/icons.svg';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import "leaflet/dist/leaflet.css";
+
+const neonIcon = new L.DivIcon({
+  className: 'cp-pin',
+  html: '<div class="cp-pin__dot"></div>',
+  iconSize: [16, 16],
+  iconAnchor: [8, 8],
+});
 
 const initial = {
   firstName: '',
@@ -214,43 +224,31 @@ const handleSubmit = async (e) => {
             </Col>
 
 
-          <Col md={6} className={addressVisible ? '' : 'opacity-0'}>
-            {addressVisible && (
-              <div className="cp-aside">
-                <h3 className="cp-aside__title">Contact</h3>
-                <ul className="cp-list">
-                  <li className="cp-list__item">
-                    <svg className="icon-contact" width="18" height="18">
-                      <use href={`${icons}#icon-location2`}></use>
-                    </svg>
-                    <a
-                      className="link"
-                      href="https://www.google.com/maps?q=38889, Blankenburg, Saxony-Anhalt, Germany"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      38889, Blankenburg, Saxony-Anhalt, Germany
-                    </a>
-                  </li>
-                  <li className="cp-list__item">
-                    <svg className="icon-contact" width="18" height="18">
-                      <use href={`${icons}#icon-mail4`}></use>
-                    </svg>
-                    <a className="link" href="mailto:yulia.gosteva85@gmail.com">
-                      yulia.gosteva85@gmail.com
-                    </a>
-                  </li>
-                  <li className="cp-list__item">
-                    <svg className="icon-contact" width="18" height="18">
-                      <use href={`${icons}#icon-phone`}></use>
-                    </svg>
-                    <a className="link" href="tel:+49015205485193">
-                      +49(0)152-054-851-93
-                    </a>
-                  </li>
-                </ul>
+          {/* права колонка — карта (Leaflet) */}
+          <Col md={6} className="cp-map-col">
+            <h3 className="cp-aside__title">Location</h3>
+            <div className="cp-map">
+              <div className="cp-map__frame">
+                <MapContainer
+                  center={[51.805, 10.953]} 
+                  zoom={12}
+                  scrollWheelZoom={false}
+                  className="cp-map__leaflet"
+                >
+                  {/* Темні тайли без ключа */}
+                  <TileLayer
+                    url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                    attribution="&copy; OpenStreetMap &copy; CARTO"
+                  />                  
+                   <Marker position={[51.805, 10.953]} icon={neonIcon}>
+                    <Popup>Blankenburg, Saxony-Anhalt, Germany</Popup>
+                  </Marker>                
+                </MapContainer>
+                <div className="cp-map__scan" aria-hidden="true"></div>
+                {/* glitch-bar overlay */}
+              <div className="cp-map__glitch" aria-hidden="true"></div>
               </div>
-            )}
+            </div>
           </Col>
         </Row>
       </Container>

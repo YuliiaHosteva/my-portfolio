@@ -1162,7 +1162,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   pointer-events: none;        /* щоб не заважало клікам */
   }
   .cp-alert{
-    pointer-events: auto;        /* але всередину можна клікнути, якщо треба */
+    pointer-events: auto;       
     width: auto;
     max-width: 100%;
     font-size: 13px;
@@ -1178,7 +1178,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   visibility: hidden;
   opacity: 0;
   transition: opacity .15s ease;
-  margin-top: 2px;        /* щоб не прилипало до інпуту */
+  margin-top: 2px;        
 }
 
 /* коли є помилка — лише показуємо */
@@ -1202,91 +1202,185 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   box-shadow: 0 0 10px rgba(255, 0, 50, 0.5);
 }
 
-
 /* права колонка */
-.cp-aside{
-  align-self: stretch;       /* ключове */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  background: rgba(15,18,28,.78);
-  border: 1px solid rgba(108,243,255,.28);
-  padding: 18px;
+.cp-map-col{ 
+  align-self: stretch; 
+  display:flex; 
+  flex-direction:column; 
+}
+.cp-aside__title{ 
+  margin:0 0 8px; 
+  color:var(--cp-accent); 
+  font-family:var(--cp-heading); }
+
+/* контейнер карти */
+.cp-map{ 
+  flex:1 1 auto; 
+}
+.cp-map__frame{
+  position:relative; 
+  width:100%; 
+  height:100%;
+  min-height:360px;
   box-shadow:
-    0 0 0 1px rgba(255,0,245,.12) inset,
-    0 0 18px rgba(0,255,240,.08);    /* твердіший glow, без «пилюки» */
+    0 0 0 1px rgba(255,0,245,.18) inset,
+    0 0 18px rgba(0,255,240,.15),
+    0 0 34px rgba(255,0,245,.12);
+  overflow:hidden; 
+  background:#0a0e16;
 }
-.cp-aside__title {
-  font-family: var(--cp-heading);
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: var(--cp-accent);
-}
-.cp-list { 
-  list-style: none; 
-  margin: 0; padding: 0; 
-  display: grid; 
-  gap: 8px; 
-}
-.cp-list__item {
-  display: grid; 
-  grid-template-columns: 20px 1fr; 
-  align-items: center; gap: 10px;
-}
-.cp-list .link { 
-  color: var(--cp-text); 
-  text-decoration: none; 
-}
-.cp-list .link:hover { 
-  text-decoration: underline; 
+@supports (aspect-ratio: 4/5){
+  .cp-map__frame{ 
+    aspect-ratio: 4/5; /* вертикальна плитка поруч із формою */
+  } 
 }
 
-/* базовий колір береться з тексту */
-.cp-aside .cp-list__item { 
-  display: grid; 
-  grid-template-columns: 22px 1fr; 
-  gap: 10px; 
-  align-items: center;
-  line-height: 1.35;
-  color: var(--cp-text);
+.cp-map__frame::before{
+  content:"";
+  position:absolute; inset:-12%;
+  pointer-events:none;
+  background:
+    radial-gradient(70% 70% at 50% 50%,
+      rgba(0,0,0,0) 55%,
+      rgba(0,255,240,.10) 72%,
+      rgba(255,0,245,.08) 82%,
+      rgba(0,0,0,.22) 100%);              /* затемнення країв */
+  filter: blur(10px);
+  opacity: .9;
 }
 
-.cp-aside .cp-list__item .icon-contact {
-  width: 18px; 
-  height: 18px;
-  display: block;
-  flex-shrink: 0;
-  fill: currentColor;           /* для fill-іконок зі sprite */
-  opacity: .95;
-  transition: transform .15s, filter .2s, opacity .2s;
-  filter: drop-shadow(0 0 2px rgba(0,255,240,.25));
+/* 1) CRT scanlines + легкий флікер (поверх мапи) */
+.cp-map__frame::after{
+  content:"";
+  position:absolute; 
+  inset:0;
+  pointer-events:none;
+
+  /* тонкі горизонтальні лінії */
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.045) 0px,
+      rgba(255,255,255,.045) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: screen;
+  opacity:.2;
+  animation: cpCrtFlicker 4.8s ease-in-out infinite;
+}
+@keyframes cpCrtFlicker{
+  0%,100%{ opacity:.18 }
+  45%    { opacity:.28 }
+}
+/* 2) «зв'язок пропадає» — короткий глітч-бар */
+.cp-map__glitch{
+  position:absolute; 
+  inset:-2px;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 44%,
+      rgba(255,0,245,.09) 46%,
+      rgba(0,255,240,.10) 50%,
+      transparent 52%,
+      transparent 100%
+    );
+  filter: blur(.4px);
+  opacity:0;
+  animation: cpSignalGlitch 8s steps(1,end) infinite;
+}
+@keyframes cpSignalGlitch{
+  0%, 78%, 100% { opacity:0; transform:none; }
+  79%          { opacity:.85; transform: translateY(-2px) }
+  80%          { opacity:.6;  transform: translateY(2px)  }
+  81%          { opacity:.7;  transform: translateY(-1px) scaleY(.98) }
+  82%          { opacity:0;   transform:none }
 }
 
-.cp-aside .cp-list__item .link {
-  color: inherit; 
-  text-decoration: none;
-  /* transition: color .15s ease, text-shadow .2s ease; */
-  align-self: center;
+
+/* сам контейнер Leaflet */
+.cp-map__leaflet{
+  position:absolute; 
+  inset:0;
+  width: 100%;
+  height: 100%;
+  animation: cpCrtWobble 14s ease-in-out infinite;
+  will-change: transform;
+}
+  @keyframes cpCrtWobble{
+  0%,100% { transform: translateZ(0) }
+  50%     { transform: translateY(-0.6px) }
 }
 
-/* hover/фокус — неоновий підсвіт */
-.cp-aside .cp-list__item:hover,
-.cp-aside .cp-list__item:focus-within {
-  color: var(--cp-neon-a);
-  text-shadow: 0 0 8px rgba(108,243,255,.45);
+.leaflet-container{ 
+  background:#0a0e16; /* safety */
+} 
+
+/* неоновий пін */
+.cp-pin{
+  width:16px; height:16px;
+  filter: drop-shadow(0 0 8px rgba(0,255,240,.7))
+          drop-shadow(0 0 12px rgba(255,0,245,.45));
+}
+.cp-pin__dot{
+  width:100%; 
+  height:100%;
+  background: radial-gradient(circle, #00fff0 0%, #00fff0 40%, transparent 41%);
 }
 
-.cp-aside .cp-list__item:hover .icon-contact,
-.cp-aside .cp-list__item:focus-within .icon-contact {
-  /* opacity: 1; */
-  transform: scale(1.05);
-  filter:
-    drop-shadow(0 0 4px rgba(0,255,240,.6))
-    drop-shadow(0 0 8px rgba(255,0,245,.35));
+/* скан-ефект */
+.cp-map__scan{
+  position:absolute; 
+  left:0; 
+  right:0; 
+  top:-40%;
+  height:32%;
+  background: linear-gradient(180deg, rgba(108,243,255,.10), transparent);
+  pointer-events:none; 
+  filter: blur(6px);
+  animation: cpMapScan 4.5s linear infinite;
 }
+@keyframes cpMapScan{ from{transform:translateY(0)} to{transform:translateY(260%)} }
+
+@media (hover:hover){
+  .cp-map__frame:hover{
+    box-shadow:
+      0 0 0 1px rgba(255,0,245,.22) inset,
+      0 0 22px rgba(0,255,240,.22),
+      0 0 44px rgba(255,0,245,.18);
+  }
+  .cp-map__frame:hover::after{ opacity:.32 }
+}
+/* косметика контролів Leaflet */
+.leaflet-control-zoom a{
+  background: rgba(10,14,22,.75);
+  color: #bff;
+  border: 1px solid rgba(108,243,255,.3);
+}
+.leaflet-control-zoom a:hover{
+  color:#fff;
+  box-shadow: 0 0 8px rgba(0,255,240,.5);
+}
+.leaflet-control-attribution{
+  background: rgba(10,14,22,.6);
+  border: 1px solid rgba(255,255,255,.08);
+  color: #9ad;
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce){
+  .cp-map__frame::after,
+  .cp-map__glitch,
+  .cp-map__leaflet{ animation: none !important; }
+}
+
 
 /* адаптив */
+/* планшет і мобільний — у стовпчик */
+
 @media (max-width: 767px) {
   .cp-contact .col-md-6{
   transform: none !important;
@@ -1328,9 +1422,8 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     min-height: 12px; 
     font-size: 11px; 
   }
+
 }
-
-
 
 @media screen and (min-width: 768px) { 
 
@@ -1404,26 +1497,6 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 
 }
 
-  @media (min-width: 1024px){
-  .cp-aside{
-    position: sticky;
-    top: calc(var(--navH, 72px) + 24px); /* піджени під висоту хедера */
-  }
-
-}
-
-.cp-title{
-  margin-bottom: 18px;
-}
-
-@media (min-width: 993px){
-    .cp-form{
-  gap: 8px 12px;
-  }
-
-}
-
-
 /* планшет і мобільний — у стовпчик */
 @media (max-width: 992px){
   .contact-bx .contact-grid{
@@ -1441,7 +1514,27 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
 }
 
 
-  @media (min-width: 1200px){
+@media (min-width: 993px){
+    .cp-form{
+  gap: 8px 12px;
+  }
+
+}
+
+
+@media (min-width: 1024px){
+  .cp-aside{
+    position: sticky;
+    top: calc(var(--navH, 72px) + 24px);
+  }
+
+  .cp-title{
+  margin-bottom: 18px;
+}
+}
+
+
+@media (min-width: 1200px){
   .contact-bx .contact-grid{
     grid-template-columns: minmax(460px, 1fr) minmax(300px, 380px);
   }
@@ -1454,7 +1547,7 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
   .cp-aside .cp-list__item .icon-contact {
   width: 22px; 
   height: 22px;
-}
+  }
   .cp-alert {
     max-width: 640px;
     font-size: 18px;
@@ -1464,6 +1557,10 @@ nav.navbar .navbar-toggler[aria-expanded='true'] .navbar-toggler-icon {
     min-height: 22px; 
   }
 
+   .cp-map__frame{ 
+    aspect-ratio:auto; 
+    min-height:260px; 
+  }
 
 }
 
